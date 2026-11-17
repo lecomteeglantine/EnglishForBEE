@@ -60,9 +60,9 @@
     {src:"https://www.fws.gov/sites/default/files/images/2025-08/barge_electrofishing_7.png",
      alt:"Fisheries researchers using electrofishing gear and nets in a shallow river",
      caption:"DIRECT FIELD SURVEY / ELECTROFISHING",credit:"Photo: USFWS · Public domain"},
-    {src:"https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=85",
-     alt:"Photograph of a forest stream and waterfall",
-     caption:"RIVER HABITAT / CONSERVATION REPORT",credit:"Illustrative landscape · Unsplash"}
+    {src:"https://upload.wikimedia.org/wikipedia/commons/c/c1/Forested_stream_with_clear_water.png",
+     alt:"A clear shallow river flowing between green forested banks",
+     caption:"RIVER HABITAT / CONSERVATION REPORT",credit:"Photo: Ricecat1235 · CC0"}
   ];
   const maxScore = stages.length * 2;
   let selectedSize = 0;
@@ -165,6 +165,10 @@
     photo.src = media.src;
     photo.alt = media.alt;
     photo.loading = "eager";
+    photo.addEventListener("error", () => {
+      figure.classList.add("bee-stage-image-missing");
+      photo.remove();
+    });
     const credit = document.createElement("figcaption");
     credit.append(
       document.createTextNode(media.caption),
