@@ -49,6 +49,21 @@
       speaking: "Which phrase in your conclusion shows appropriate scientific caution?"
     }
   ];
+  // Documentary photographs only; these do not depict the simulated survey.
+  const stageMedia = [
+    {src:"https://upload.wikimedia.org/wikipedia/commons/0/06/Bull_Trout_%2821300250425%29.jpg",
+     alt:"A photographed bull trout resting in shallow clear water over stones",
+     caption:"BULL TROUT / SPECIES IDENTIFICATION",credit:"Photo: Jim Mogen / USFWS · CC BY 2.0"},
+    {src:"https://www.fws.gov/rivers/sites/default/files/2021-06/eDNA.jpg",
+     alt:"Field researchers preparing tubes and equipment for water eDNA sampling",
+     caption:"eDNA SAMPLING / DETECTION",credit:"Photo: Kyle Von Ruden / USFWS · Public domain"},
+    {src:"https://www.fws.gov/sites/default/files/styles/max_1300x1300/public/images/2025-09/backpack_electrofishing_17.png?itok=55SjhXXm",
+     alt:"An electrofishing technician standing in a wooded stream with sampling equipment",
+     caption:"DIRECT FIELD SURVEY / ELECTROFISHING",credit:"Photo: USFWS · Public domain"},
+    {src:"https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=85",
+     alt:"Photograph of a forest stream and waterfall",
+     caption:"RIVER HABITAT / CONSERVATION REPORT",credit:"Illustrative landscape · Unsplash"}
+  ];
   const maxScore = stages.length * 2;
   let selectedSize = 0;
   let active = false;
@@ -140,12 +155,29 @@
   };
   const renderRound = () => {
     const step = stages[roundIndex];
+    const media = stageMedia[roundIndex];
     const content = find("beeStageBody");
-    content.replaceChildren(
-      textNode("h3", "bee-stage-title", step.title),
-      textNode("p", "bee-evidence", step.evidence),
-      textNode("p", "bee-prompt", step.question)
+    const label = textNode("div","bee-case-top","CASE FILE / " + String(roundIndex + 1).padStart(2,"0"));
+    const heading = textNode("h3","bee-stage-title",step.title);
+    const figure = document.createElement("figure");
+    figure.className = "bee-stage-visual";
+    const photo = document.createElement("img");
+    photo.src = media.src;
+    photo.alt = media.alt;
+    photo.loading = "eager";
+    const credit = document.createElement("figcaption");
+    credit.append(
+      document.createTextNode(media.caption),
+      textNode("small","",media.credit + " · Illustrative photograph")
     );
+    figure.append(photo,credit);
+    const evidence = document.createElement("div");
+    evidence.className = "bee-evidence-card";
+    evidence.append(
+      textNode("span","bee-overline","RESEARCH EVIDENCE"),
+      textNode("p","bee-evidence",step.evidence)
+    );
+    content.replaceChildren(label,heading,figure,evidence,textNode("p","bee-prompt",step.question));
     const options = find("beeDecisions");
     options.replaceChildren();
     step.options.forEach(option => {
