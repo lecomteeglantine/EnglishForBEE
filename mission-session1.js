@@ -3,6 +3,12 @@
   const root = document.getElementById("beeMission");
   if (!root) return;
   const find = id => document.getElementById(id);
+  const introPhoto = root.querySelector(".bee-field-photo img");
+  if (introPhoto) {
+    const markMissing = () => introPhoto.closest(".bee-field-photo").classList.add("is-missing");
+    introPhoto.addEventListener("error", markMissing);
+    if (introPhoto.complete && introPhoto.naturalWidth === 0) markMissing();
+  }
   const stages = [
     {
       title: "A confirmed finding",
