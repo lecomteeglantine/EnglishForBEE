@@ -102,3 +102,6 @@
 .bee-mission .bee-stage-image-missing{background:linear-gradient(135deg,#dceae5,#a9c9bc);min-height:170px}
 .bee-mission .bee-stage-image-missing:before{content:"FIELD PHOTOGRAPH UNAVAILABLE";display:block;position:absolute;top:25px;left:24px;color:#174733;letter-spacing:.13em;font-size:.75rem;font-weight:800}
 .bee-mission .bee-field-photo{background:#567f6a}
+
+.bee-mission .bee-field-photo.is-missing img{display:none}
+.bee-mission .bee-field-photo.is-missing:before{content:"FIELDWORK · eDNA SAMPLING";position:absolute;left:20px;top:25px;color:#eaf4e8;letter-spacing:.11em;font-size:.78rem;font-weight:800}
