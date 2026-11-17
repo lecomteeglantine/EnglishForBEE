@@ -57,8 +57,8 @@
     {src:"https://www.fws.gov/rivers/sites/default/files/2021-06/eDNA.jpg",
      alt:"Field researchers preparing tubes and equipment for water eDNA sampling",
      caption:"eDNA SAMPLING / DETECTION",credit:"Photo: Kyle Von Ruden / USFWS · Public domain"},
-    {src:"https://www.fws.gov/sites/default/files/styles/max_1300x1300/public/images/2025-09/backpack_electrofishing_17.png?itok=55SjhXXm",
-     alt:"An electrofishing technician standing in a wooded stream with sampling equipment",
+    {src:"https://www.fws.gov/sites/default/files/images/2025-08/barge_electrofishing_7.png",
+     alt:"Fisheries researchers using electrofishing gear and nets in a shallow river",
      caption:"DIRECT FIELD SURVEY / ELECTROFISHING",credit:"Photo: USFWS · Public domain"},
     {src:"https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=85",
      alt:"Photograph of a forest stream and waterfall",
@@ -255,6 +255,7 @@
     makeTimers();
     renderRound();
     timerHandle = setInterval(renderTimers, 500);
+    find("beePlay").scrollIntoView({ block: "start", behavior: "auto" });
     find("beeStageCount").focus({ preventScroll: true });
   };
   const next = () => {
@@ -262,6 +263,7 @@
     if (roundIndex === stages.length - 1) return finish();
     roundIndex++;
     renderRound();
+    find("beePlay").scrollIntoView({ block: "start", behavior: "auto" });
     find("beeStageCount").focus({ preventScroll: true });
   };
   const reset = () => {
