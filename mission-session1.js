@@ -10,51 +10,111 @@
     if (introPhoto.complete && introPhoto.naturalWidth === 0) markMissing();
   }
   const stages = [
-    {
-      title: "A confirmed finding",
-      evidence: "Site B · Lower reach: a researcher caught and identified one bull trout. All three independent water samples also tested positive for bull trout eDNA.",
-      question: "Which statement belongs in the field report?",
-      options: [
-        { id: "A", text: "Bull trout presence at Site B was confirmed during the survey, but population size is unknown.", points: 2, reason: "Correctly separates direct evidence of one fish from claims about population size or breeding." },
-        { id: "B", text: "Bull trout may be present at Site B, but direct evidence is still needed.", points: 1, reason: "Too cautious: the captured and identified fish is direct evidence of presence at that location and time." },
-        { id: "C", text: "Both methods demonstrate that Site B supports a stable breeding population.", points: 0, reason: "A capture and positive eDNA results cannot establish breeding, population size or long-term stability." }
-      ],
-      speaking: "What is the difference between confirming one fish and estimating a population?"
-    },
-    {
-      title: "The positive sample without a catch",
-      evidence: "Site A · Upper reach: two of three water samples tested positive, but no bull trout was caught in one electrofishing survey. Water can transport DNA downstream, and a direct survey can miss fish.",
-      question: "You have one more field visit. Which plan would reduce uncertainty most effectively?",
-      options: [
-        { id: "A", text: "Sample water both farther upstream and near Site A, and repeat a targeted direct survey.", points: 2, reason: "Combining spatial eDNA samples and another direct survey helps investigate the source of DNA and the possibility of non-detection." },
-        { id: "B", text: "Repeat electrofishing at exactly the same pool, but do not collect more water samples.", points: 1, reason: "A repeated direct survey may help, but it does less to investigate where the eDNA originated." },
-        { id: "C", text: "Classify Site A as definitely occupied because two water samples were positive.", points: 0, reason: "Positive eDNA supports possible presence in the contributing area; it does not locate individual fish precisely." }
-      ],
-      speaking: "Which limitation does your proposed sampling plan address?"
-    },
-    {
-      title: "The negative tributary",
-      evidence: "Site C · Tributary: none of the three water samples contained detectable bull trout eDNA, and no bull trout was caught. Both methods were used only once, after a period of high stream flow.",
-      question: "What is a defensible interpretation of Site C?",
-      options: [
-        { id: "A", text: "Neither method detected bull trout on this visit; the data do not establish their absence.", points: 2, reason: "Non-detection on one visit is not proof of absence. Sampling effort and stream conditions affect detection." },
-        { id: "B", text: "Bull trout are probably absent, so Site C does not need any follow-up survey.", points: 1, reason: "Absence is possible, but these limited observations are not strong enough to dismiss further sampling." },
-        { id: "C", text: "Bull trout are certainly absent because both methods gave negative results.", points: 0, reason: "Both methods can fail to detect fish, particularly with limited sampling and variable environmental conditions." }
-      ],
-      speaking: "What additional evidence would make your conclusion stronger?"
-    },
-    {
-      title: "Your message to conservation staff",
-      evidence: "The survey is complete. Site B had a confirmed capture; Site A produced positive eDNA without a capture; Site C produced no detections. Staff need a short conclusion that distinguishes observations from interpretations.",
-      question: "Which scientific summary should your team submit?",
-      options: [
-        { id: "A", text: "Presence was confirmed at B. eDNA at A suggests bull trout DNA within the upstream contributing area, but cannot pinpoint fish. No fish were detected at C; further surveys are warranted.", points: 2, reason: "This statement reports the direct observation, qualifies the eDNA result, and does not turn non-detection into proof of absence." },
-        { id: "B", text: "The species occupies both A and B, and the negative findings demonstrate that C has no bull trout.", points: 0, reason: "It overstates what eDNA can locate and treats a limited set of negative surveys as conclusive." },
-        { id: "C", text: "Only the captured fish at B provides useful information; the findings at A and C should be discarded.", points: 1, reason: "The confirmed capture matters, but the other sites provide useful evidence about survey coverage and unresolved uncertainty." }
-      ],
-      speaking: "Which phrase in your conclusion shows appropriate scientific caution?"
-    }
-  ];
+  {
+    "title": "A confirmed finding",
+    "evidence": "Site B · Lower reach: a researcher caught and identified one bull trout. All three independent water samples also tested positive for bull trout eDNA.",
+    "question": "Which statement belongs in the field report?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Bull trout may be present at Site B, but direct evidence is still needed.",
+        "points": 1,
+        "reason": "Too cautious: the captured and identified fish is direct evidence of presence at that location and time."
+      },
+      {
+        "id": "B",
+        "text": "Bull trout presence at Site B was confirmed during the survey, but population size is unknown.",
+        "points": 2,
+        "reason": "Correctly separates direct evidence of one fish from claims about population size or breeding."
+      },
+      {
+        "id": "C",
+        "text": "Both methods demonstrate that Site B supports a stable breeding population.",
+        "points": 0,
+        "reason": "A capture and positive eDNA results cannot establish breeding, population size or long-term stability."
+      }
+    ],
+    "speaking": "What is the difference between confirming one fish and estimating a population?"
+  },
+  {
+    "title": "The positive sample without a catch",
+    "evidence": "Site A · Upper reach: two of three water samples tested positive, but no bull trout was caught in one electrofishing survey. Water can transport DNA downstream, and a direct survey can miss fish.",
+    "question": "You have one more field visit. Which plan would reduce uncertainty most effectively?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Classify Site A as definitely occupied because two water samples were positive.",
+        "points": 0,
+        "reason": "Positive eDNA supports possible presence in the contributing area; it does not locate individual fish precisely."
+      },
+      {
+        "id": "B",
+        "text": "Repeat electrofishing at exactly the same pool, but do not collect more water samples.",
+        "points": 1,
+        "reason": "A repeated direct survey may help, but it does less to investigate where the eDNA originated."
+      },
+      {
+        "id": "C",
+        "text": "Sample water both farther upstream and near Site A, and repeat a targeted direct survey.",
+        "points": 2,
+        "reason": "Combining spatial eDNA samples and another direct survey helps investigate the source of DNA and the possibility of non-detection."
+      }
+    ],
+    "speaking": "Which limitation does your proposed sampling plan address?"
+  },
+  {
+    "title": "The negative tributary",
+    "evidence": "Site C · Tributary: none of the three water samples contained detectable bull trout eDNA, and no bull trout was caught. Both methods were used only once, after a period of high stream flow.",
+    "question": "What is a defensible interpretation of Site C?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Neither method detected bull trout on this visit; the data do not establish their absence.",
+        "points": 2,
+        "reason": "Non-detection on one visit is not proof of absence. Sampling effort and stream conditions affect detection."
+      },
+      {
+        "id": "B",
+        "text": "Bull trout are certainly absent because both methods gave negative results.",
+        "points": 0,
+        "reason": "Both methods can fail to detect fish, particularly with limited sampling and variable environmental conditions."
+      },
+      {
+        "id": "C",
+        "text": "Bull trout are probably absent, so Site C does not need any follow-up survey.",
+        "points": 1,
+        "reason": "Absence is possible, but these limited observations are not strong enough to dismiss further sampling."
+      }
+    ],
+    "speaking": "What additional evidence would make your conclusion stronger?"
+  },
+  {
+    "title": "Your message to conservation staff",
+    "evidence": "The survey is complete. Site B had a confirmed capture; Site A produced positive eDNA without a capture; Site C produced no detections. Staff need a short conclusion that distinguishes observations from interpretations.",
+    "question": "Which scientific summary should your team submit?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Only the captured fish at B provides useful information; the findings at A and C should be discarded.",
+        "points": 1,
+        "reason": "The confirmed capture matters, but the other sites provide useful evidence about survey coverage and unresolved uncertainty."
+      },
+      {
+        "id": "B",
+        "text": "Presence was confirmed at B. eDNA at A suggests bull trout DNA within the upstream contributing area, but cannot pinpoint fish. No fish were detected at C; further surveys are warranted.",
+        "points": 2,
+        "reason": "This statement reports the direct observation, qualifies the eDNA result, and does not turn non-detection into proof of absence."
+      },
+      {
+        "id": "C",
+        "text": "The species occupies both A and B, and the negative findings demonstrate that C has no bull trout.",
+        "points": 0,
+        "reason": "It overstates what eDNA can locate and treats a limited set of negative surveys as conclusive."
+      }
+    ],
+    "speaking": "Which phrase in your conclusion shows appropriate scientific caution?"
+  }
+];
   // Documentary photographs only; these do not depict the simulated survey.
   const stageMedia = [
     {src:"https://upload.wikimedia.org/wikipedia/commons/0/06/Bull_Trout_%2821300250425%29.jpg",
