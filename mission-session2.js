@@ -10,7 +10,7 @@ const show=(id,yes)=>{$(id).hidden=!yes};
 const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
 const fmt=ms=>{const t=Math.floor(Math.max(0,ms)/1000);return String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")};
 const current=i=>times[i]+(speaker===i?Math.max(0,Date.now()-started):0);
-function renderTimes(){root.querySelectorAll("[data-bee2-speaker]").forEach(b=>{const i=Number(b.dataset.bee2Speaker);b.textContent=(speaker===i?"Pause":"Start")+" Player "+(i+1);b.setAttribute("aria-pressed",String(speaker===i));$("#bee2Time"+i).textContent=fmt(current(i));})}
+function renderTimes(){root.querySelectorAll("[data-bee2-speaker]").forEach(b=>{const i=Number(b.dataset.bee2Speaker);b.textContent=(speaker===i?"Pause":"Start")+" Player "+(i+1);b.setAttribute("aria-pressed",String(speaker===i));$("bee2Time"+i).textContent=fmt(current(i));})}
 function pause(){if(speaker!==-1){times[speaker]+=Math.max(0,Date.now()-started);speaker=-1;}renderTimes()}
 function stopClock(){pause();if(interval!==null){clearInterval(interval);interval=null}}
 function initSpeakers(){stopClock();times=Array(size).fill(0);const dest=$("bee2Speakers");dest.replaceChildren();for(let i=0;i<size;i++){const item=make("div","bee2-speaker");const button=make("button","","Start Player "+(i+1));button.type="button";button.dataset.bee2Speaker=String(i);button.setAttribute("aria-pressed","false");button.addEventListener("click",()=>{const was=speaker===i;pause();if(!was){speaker=i;started=Date.now()}renderTimes()});const time=make("strong","", "00:00");time.id="bee2Time"+i;item.append(button,time);dest.append(item)}renderTimes();interval=setInterval(renderTimes,500)}
